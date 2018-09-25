@@ -1,4 +1,5 @@
 import { PrestationModel } from '../../shared/models/prestation.model';
+import { PrestationState } from '../../shared/enums/prestation-state.enum';
 
 export const prestationData: PrestationModel[] = [
   new PrestationModel({
@@ -6,13 +7,14 @@ export const prestationData: PrestationModel[] = [
     type: 'Formation',
     client: 'Modis',
     numberOfDays: 2,
-    adrExclTax: 500
+    exclTaxADR: 500,
+    state: PrestationState.CONFIRMED
   }),
   new PrestationModel({
     id: 'a4',
     type: 'Coaching',
     client: 'EduGroupe',
     numberOfDays: 3,
-    adrExclTax: 550
+    exclTaxADR: 550
   })
 ];

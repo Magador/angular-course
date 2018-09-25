@@ -6,7 +6,7 @@ export class PrestationModel implements Prestation {
   type: string;
   client: string;
   numberOfDays = 0;
-  adrExclTax = 0;
+  exclTaxADR = 0;
   vatRate = 0.2;
   state: PrestationState = PrestationState.OPTION;
 
@@ -17,10 +17,12 @@ export class PrestationModel implements Prestation {
   }
 
   public excludedTaxTotal() {
-    return this.numberOfDays * this.adrExclTax;
+    console.count('excludedTaxTotal called');
+    return this.numberOfDays * this.exclTaxADR;
   }
 
   public includedTaxTotal(vatRate?: number) {
+    console.count('includedTaxTotal called');
     let rate = vatRate !== undefined ? vatRate : this.vatRate;
     if (rate < 0) {
       rate = 0;

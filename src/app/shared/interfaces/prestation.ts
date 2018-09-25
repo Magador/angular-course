@@ -5,7 +5,7 @@ export interface Prestation {
   type: string;
   client: string;
   numberOfDays: number;
-  adrExclTax: number;
+  exclTaxADR: number;
   vatRate: number;
   state: PrestationState;
 }
