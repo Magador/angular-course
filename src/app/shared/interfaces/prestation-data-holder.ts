@@ -1,10 +1,11 @@
 import { PrestationState } from '../enums/prestation-state.enum';
 
-export interface Prestation {
+export interface PrestationDataHolder {
   id: string;
   type: string;
   client: string;
-  dayLength: number;
-  tjmHt: number;
+  numberOfDays: number;
+  adrExclTax: number;
+  vatRate: number;
   state: PrestationState;
 }

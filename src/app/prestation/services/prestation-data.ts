@@ -1,10 +1,14 @@
-export const prestationData = [
+import { PrestationDataHolder } from '../../shared/interfaces/prestation-data-holder';
+import { PrestationState } from '../../shared/enums/prestation-state.enum';
+
+export const prestationData: PrestationDataHolder[] = [
   {
     id: 'e3',
-    typePresta: 'Formation',
+    type: 'Formation',
     client: 'Modis',
-    nbJours: 2,
-    tjmHt: 500,
-    state: 'Option'
+    numberOfDays: 2,
+    adrExclTax: 500,
+    vatRate: 0.2,
+    state: PrestationState.OPTION
   }
 ];
