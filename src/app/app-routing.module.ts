@@ -9,8 +9,8 @@ import {
 const appRoutes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   {
-    path: 'prestations',
-    loadChildren: './prestations/prestations.module#PrestationsModule'
+    path: 'prestation',
+    loadChildren: './prestation/prestation.module#PrestationModule'
   }
 ];
 
