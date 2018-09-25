@@ -9,4 +9,4 @@ import { ListPrestationsComponent } from './containers/list-prestations/list-pre
   declarations: [ListPrestationsComponent],
   exports: [ListPrestationsComponent]
 })
-export class PrestationModule { }
+export class PrestationsModule { }
