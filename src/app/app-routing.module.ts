@@ -1,17 +1,25 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes, Router } from '@angular/router';
-import { PageNotFoundComponent } from './page-not-found/containers/page-not-found/page-not-found.component';
+import {
+  RouterModule,
+  Routes,
+  Router,
+  PreloadAllModules
+} from '@angular/router';
 
 const appRoutes: Routes = [
- {path: '', redirectTo: '/login', pathMatch: 'full'}
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  {
+    path: 'prestations',
+    loadChildren: './prestations/prestations.module#PrestationsModule'
+  }
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(
-      appRoutes,
-      { enableTracing : false}
-    )
+    RouterModule.forRoot(appRoutes, {
+      enableTracing: false,
+      preloadingStrategy: PreloadAllModules
+    })
   ],
   exports: [RouterModule]
 })
@@ -19,4 +27,4 @@ export class AppRoutingModule {
   constructor(router: Router) {
     console.log('Routes: ', JSON.stringify(router.config, undefined, 2));
   }
- }
+}
