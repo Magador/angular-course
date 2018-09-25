@@ -1,6 +1,6 @@
 import { PrestationState } from '../enums/prestation-state.enum';
 
-export interface PrestationDataHolder {
+export interface Prestation {
   id: string;
   type: string;
   client: string;

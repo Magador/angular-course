@@ -1,7 +1,7 @@
-import { PrestationDataHolder } from '../interfaces/prestation-data-holder';
+import { Prestation } from '../interfaces/prestation';
 import { PrestationState } from '../enums/prestation-state.enum';
 
-export class Prestation implements PrestationDataHolder {
+export class PrestationModel implements Prestation {
   id: string;
   type: string;
   client: string;
@@ -10,7 +10,7 @@ export class Prestation implements PrestationDataHolder {
   vatRate = 0.2;
   state: PrestationState = PrestationState.OPTION;
 
-  constructor(fields?: Partial<Prestation>) {
+  constructor(fields?: Partial<PrestationModel>) {
     if (fields) {
       Object.assign(this, fields);
     }
