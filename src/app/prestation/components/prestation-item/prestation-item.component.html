@@ -4,7 +4,7 @@
 <td>{{prestation.exclTaxADR | currency:'EUR'}}</td>
 <td>{{prestation | totalPrice | currency:'EUR'}}</td>
 <td>{{prestation | totalPrice:prestation.vatRate | currency:'EUR'}}</td>
-<td [appState]="prestation.state">
+<td [appPrestationState]="prestation.state">
   <select (change)="onChangeState($event)">
     <option [value]="prestation.state">{{prestation.state}}</option>
     <ng-container *ngFor="let state of prestationStates">

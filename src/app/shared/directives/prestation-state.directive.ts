@@ -8,18 +8,18 @@ import {
 import { PrestationState } from '../enums/prestation-state.enum';
 
 @Directive({
-  selector: '[appState]'
+  selector: '[appPrestationState]'
 })
-export class StateDirective implements OnChanges {
+export class PrestationStateDirective implements OnChanges {
   @HostBinding('class')
   state: string;
 
   @Input()
-  appState: PrestationState;
+  appPrestationState: PrestationState;
 
   constructor() {}
 
   ngOnChanges() {
-    this.state = `state-${this.appState.toLowerCase()}`;
+    this.state = `state-${this.appPrestationState.toLowerCase()}`;
   }
 }
