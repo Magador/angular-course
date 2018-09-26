@@ -17,12 +17,10 @@ export class PrestationModel implements Prestation {
   }
 
   public excludedTaxTotal() {
-    console.count('excludedTaxTotal called');
     return this.numberOfDays * this.exclTaxADR;
   }
 
   public includedTaxTotal(vatRate?: number) {
-    console.count('includedTaxTotal called');
     let rate = vatRate !== undefined ? vatRate : this.vatRate;
     if (rate < 0) {
       rate = 0;

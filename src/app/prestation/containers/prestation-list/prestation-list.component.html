@@ -2,32 +2,11 @@
   <table class="table">
     <thead>
       <tr>
-        <th>Type</th>
-        <th>Client</th>
-        <th>Number of days</th>
-        <th>ADR excl. tax</th>
-        <th>Excl. tax total</th>
-        <th>Incl. tax total</th>
-        <th>State</th>
+        <th *ngFor="let header of headers">{{header}}</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let prestation of prestations">
-        <td>{{prestation.type}}</td>
-        <td>{{prestation.client}}</td>
-        <td>{{prestation.numberOfDays}}</td>
-        <td>{{prestation.exclTaxADR | currency:'EUR'}}</td>
-        <td>{{prestation | totalPrice | currency:'EUR'}}</td>
-        <td>{{prestation | totalPrice:prestation.vatRate | currency:'EUR'}}</td>
-        <td>
-          <select>
-            <option [value]="prestation.state">{{prestation.state}}</option>
-            <ng-container *ngFor="let state of prestationStates">
-              <option *ngIf="state !== prestation.state" [value]="state">{{state}}</option>
-            </ng-container>
-          </select>
-        </td>
-      </tr>
+      <tr app-prestation-item *ngFor="let prestation of prestations" [prestation]="prestation"></tr>
     </tbody>
   </table>
 </div>

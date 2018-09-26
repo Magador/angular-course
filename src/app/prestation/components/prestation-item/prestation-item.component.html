@@ -1,0 +1,14 @@
+<td>{{prestation.type}}</td>
+<td>{{prestation.client}}</td>
+<td>{{prestation.numberOfDays}}</td>
+<td>{{prestation.exclTaxADR | currency:'EUR'}}</td>
+<td>{{prestation | totalPrice | currency:'EUR'}}</td>
+<td>{{prestation | totalPrice:prestation.vatRate | currency:'EUR'}}</td>
+<td>
+  <select>
+    <option [value]="prestation.state">{{prestation.state}}</option>
+    <ng-container *ngFor="let state of prestationStates">
+      <option *ngIf="state !== prestation.state" [value]="state">{{state}}</option>
+    </ng-container>
+  </select>
+</td>
