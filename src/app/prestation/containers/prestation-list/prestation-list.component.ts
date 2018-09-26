@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PrestationModel } from '../../../shared/models/prestation.model';
 import { PrestationService } from '../../services/prestation.service';
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { TableButton } from '../../../shared/interfaces/table-button';
 
 @Component({
   selector: 'app-prestation-list',
@@ -10,6 +12,7 @@ import { PrestationService } from '../../services/prestation.service';
 export class PrestationListComponent implements OnInit {
   public prestations: PrestationModel[];
   public headers: string[];
+  public tableButton: TableButton;
 
   constructor(prestationService: PrestationService) {
     this.prestations = prestationService.collection;
@@ -22,6 +25,11 @@ export class PrestationListComponent implements OnInit {
       'Incl. tax total',
       'State'
     ];
+    this.tableButton = {
+      route: 'add',
+      icon: faPlusCircle,
+      label: 'Add prestation'
+    };
   }
 
   ngOnInit() {}

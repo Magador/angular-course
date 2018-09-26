@@ -1,12 +1,4 @@
-<div class="table-responsive">
-  <table class="table">
-    <thead>
-      <tr>
-        <th *ngFor="let header of headers">{{header}}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr app-prestation-item *ngFor="let prestation of prestations" [prestation]="prestation"></tr>
-    </tbody>
-  </table>
-</div>
+<app-table [headers]="headers">
+  <tr app-prestation-item *ngFor="let prestation of prestations" [prestation]="prestation"></tr>
+  <app-table-button *ngIf="tableButton" [tableButton]="tableButton"></app-table-button>
+</app-table>
