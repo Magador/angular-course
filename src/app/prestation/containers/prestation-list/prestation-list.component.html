@@ -1,4 +1,4 @@
 <app-table [headers]="headers">
-  <tr app-prestation-item *ngFor="let prestation of prestations" [prestation]="prestation"></tr>
+  <tr [app-prestation-item]="prestation" *ngFor="let prestation of prestations"></tr>
   <app-table-button *ngIf="tableButton" [tableButton]="tableButton"></app-table-button>
 </app-table>

@@ -1,0 +1,13 @@
+@import "~src/variables";
+
+.state-cancelled {
+  background-color: $palette-color-two
+}
+
+.state-option {
+  background-color: $palette-color-three
+}
+
+.state-confirmed {
+  background-color: $palette-color-four
+}

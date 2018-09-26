@@ -20,6 +20,7 @@ aside {
   min-height: $sidenav-min-height;
   position: fixed;
   z-index: 1000;
+
   .scroller {
     overflow-y: auto;
     max-height: $scroller-max-height;
@@ -37,6 +38,10 @@ aside {
   width: $shadow-width;
   min-height: $shadow-min-height;
   z-index: 1000;
+}
+
+.close-aside .shadow {
+  display: none
 }
 
 .page {
@@ -58,7 +63,9 @@ footer {
   .shadow {
     display: none;
   }
-  .contents, footer {
+
+  .contents,
+  footer {
     margin-left: $sidenav-width;
   }
 

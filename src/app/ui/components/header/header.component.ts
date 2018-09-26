@@ -10,13 +10,9 @@ export class HeaderComponent implements OnInit {
   public title = 'Angular Course CRM';
   public faBars = faBars;
   public faUser = faUser;
-  public toggled = false;
+  public toggled = true;
 
   constructor() {}
 
   ngOnInit() {}
-
-  public toggle() {
-    this.toggled = !this.toggled;
-  }
 }
