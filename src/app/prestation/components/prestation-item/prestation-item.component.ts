@@ -4,8 +4,7 @@ import { PrestationState } from '../../../shared/enums/prestation-state.enum';
 import { PrestationService } from '../../services/prestation.service';
 
 @Component({
-  // tslint:disable-next-line:component-selector
-  selector: '[app-prestation-item]',
+  selector: '[app-prestation-item], app-prestation-item',
   templateUrl: './prestation-item.component.html',
   styleUrls: ['./prestation-item.component.scss']
 })

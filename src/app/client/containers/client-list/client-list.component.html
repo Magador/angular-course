@@ -1,0 +1,4 @@
+<app-table [headers]="headers">
+  <tr [app-client-item]="client" *ngFor="let client of clients"></tr>
+  <app-table-button *ngIf="tableButton" [tableButton]="tableButton"></app-table-button>
+</app-table>

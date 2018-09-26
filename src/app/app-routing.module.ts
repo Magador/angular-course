@@ -11,6 +11,10 @@ const appRoutes: Routes = [
   {
     path: 'prestation',
     loadChildren: './prestation/prestation.module#PrestationModule'
+  },
+  {
+    path: 'client',
+    loadChildren: './client/client.module#ClientModule'
   }
 ];
 

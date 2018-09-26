@@ -4,10 +4,12 @@
   background-color: $palette-color-two
 }
 
-.state-option {
+.state-option,
+.state-inactive {
   background-color: $palette-color-three
 }
 
-.state-confirmed {
+.state-confirmed,
+.state-active {
   background-color: $palette-color-four
 }

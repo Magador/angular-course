@@ -1,0 +1,12 @@
+<td>{{client.name}}</td>
+<td><a href="mailto:{{client.email}}">{{client.email}}</a></td>
+<td><a href="tel:{{client.tel}}">{{client.tel}}</a></td>
+<td>{{client.contact}}</td>
+<td [appClientState]="client.state">
+  <select (change)="onChangeState($event)">
+    <option [value]="client.state">{{client.state}}</option>
+    <ng-container *ngFor="let state of clientStates">
+      <option *ngIf="state !== client.state" [value]="state">{{state}}</option>
+    </ng-container>
+  </select>
+</td>

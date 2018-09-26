@@ -7,6 +7,7 @@ import { TableButtonComponent } from './components/table-button/table-button.com
 import { TableComponent } from './components/table/table.component';
 import { TotalPricePipe } from './pipes/total-price.pipe';
 import { PrestationStateDirective } from './directives/prestation-state.directive';
+import { ClientStateDirective } from './directives/client-state.directive';
 
 @NgModule({
   imports: [CommonModule, FontAwesomeModule, RouterModule],
@@ -14,13 +15,15 @@ import { PrestationStateDirective } from './directives/prestation-state.directiv
     TotalPricePipe,
     TableComponent,
     TableButtonComponent,
-    PrestationStateDirective
+    PrestationStateDirective,
+    ClientStateDirective
   ],
   exports: [
     TotalPricePipe,
     TableComponent,
     TableButtonComponent,
-    PrestationStateDirective
+    PrestationStateDirective,
+    ClientStateDirective
   ]
 })
 export class SharedModule {}
