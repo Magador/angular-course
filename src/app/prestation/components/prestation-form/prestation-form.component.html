@@ -1,0 +1,36 @@
+<div class="container">
+  <form novalidate #form="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="type">Type</label>
+      <input #type="ngModel" [(ngModel)]="prestation.type" name="type" type="text" class="form-control" id="type"
+        required>
+      <div *ngIf="type.invalid && type.touched" class="alert alert-danger">
+        Type is required
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="client">Client</label>
+      <input [(ngModel)]="prestation.client" name="client" type="text" class="form-control" id="client">
+    </div>
+    <div class="form-group">
+      <label for="numberOfDays">Number of days</label>
+      <input [(ngModel)]="prestation.numberOfDays" name="numberOfDays" type="number" class="form-control" id="numberOfDays">
+    </div>
+    <div class="form-group">
+      <label for="vatRate">VAT rate</label>
+      <input [(ngModel)]="prestation.vatRate" name="vatRate" type="number" class="form-control" id="vatRate" min="0"
+        step="0.01">
+    </div>
+    <div class="form-group">
+      <label for="exclTaxADR">Average Daily Rate excluding taxes</label>
+      <input [(ngModel)]="prestation.exclTaxADR" name="exclTaxADR" type="number" class="form-control" id="exclTaxADR">
+    </div>
+    <div class="form-group">
+      <label for="state">State</label>
+      <select [(ngModel)]="prestation.state" name="state" class="form-control" id="state">
+        <option *ngFor="let state of states" [ngValue]="state">{{state}}</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Submit</button>
+  </form>
+</div>

@@ -5,7 +5,7 @@ export class PrestationModel implements Prestation {
   id: string;
   type: string;
   client: string;
-  numberOfDays = 0;
+  numberOfDays = 1;
   exclTaxADR = 0;
   vatRate = 0.2;
   state: PrestationState = PrestationState.OPTION;

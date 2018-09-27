@@ -27,4 +27,17 @@ export class PrestationService {
   ) {
     prestation.state = state;
   }
+
+  public addPrestation(prestation: PrestationModel): void {
+    this.collection.push(prestation);
+  }
+
+  public updatePrestation(prestation: PrestationModel): void {
+    const persistedPrestation = this.collection.filter(
+      p => p.id === prestation.id
+    )[0];
+    if (persistedPrestation) {
+      Object.assign(persistedPrestation, prestation);
+    }
+  }
 }
