@@ -19,9 +19,9 @@ export class PrestationItemComponent implements OnInit {
   ngOnInit() {}
 
   public onChangeState(e) {
-    this.prestationService.updatePrestationState(
-      this.prestation,
-      e.target.value
-    );
+    const state = e.target.value;
+    this.prestationService
+      .updatePrestation(this.prestation, state)
+      .then(item => (this.prestation.state = state));
   }
 }

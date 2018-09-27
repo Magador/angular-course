@@ -1,43 +1,74 @@
 import { Injectable } from '@angular/core';
+import {
+  AngularFirestore,
+  AngularFirestoreCollection
+} from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+
 import { PrestationModel } from '../../shared/models/prestation.model';
 import { prestationData } from './prestation-data';
 import { PrestationState } from '../../shared/enums/prestation-state.enum';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PrestationService {
-  private _collection: PrestationModel[];
+  private prestationCollection: AngularFirestoreCollection<PrestationModel>;
+  private _collection: Observable<PrestationModel[]>;
 
-  constructor() {
-    this._collection = prestationData;
+  constructor(private afs: AngularFirestore, private http: HttpClient) {
+    this.prestationCollection = afs.collection<PrestationModel>('prestations');
+    this._collection = this.prestationCollection
+      .valueChanges()
+      .pipe(map(coll => coll.map(item => new PrestationModel(item))));
+    // this.http.get<PrestationModel[]>('url/prestation');
   }
 
-  get collection(): PrestationModel[] {
+  get collection(): Observable<PrestationModel[]> {
     return this._collection;
   }
 
-  set collection(collection: PrestationModel[]) {
+  set collection(collection: Observable<PrestationModel[]>) {
     this._collection = collection;
   }
 
-  public updatePrestationState(
+  public addPrestation(prestation: PrestationModel): any {
+    const id = this.afs.createId();
+    const p = { id, ...prestation };
+    this.prestationCollection
+      .doc(id)
+      .set(prestation)
+      .catch(e => console.error(e));
+    // return this.http.post('urlaspi/prestations/', p);
+  }
+
+  public updatePrestation(
     prestation: PrestationModel,
-    state: PrestationState
-  ) {
-    prestation.state = state;
-  }
-
-  public addPrestation(prestation: PrestationModel): void {
-    this.collection.push(prestation);
-  }
-
-  public updatePrestation(prestation: PrestationModel): void {
-    const persistedPrestation = this.collection.filter(
-      p => p.id === prestation.id
-    )[0];
-    if (persistedPrestation) {
-      Object.assign(persistedPrestation, prestation);
+    state?: PrestationState
+  ): Promise<any> {
+    const p = { ...prestation };
+    if (state) {
+      p.state = state;
     }
+    return this.prestationCollection
+      .doc(p.id)
+      .update(p)
+      .catch(e => console.error(e));
+    // this.http.patch(`urlapi/prestations/item.id`, p);
+  }
+
+  public deletePrestation(item: PrestationModel): Promise<any> {
+    return this.prestationCollection
+      .doc(item.id)
+      .delete()
+      .catch(e => console.error(e));
+    // return this.http.delete(`urlapi/prestations/${item.id}`);
+  }
+
+  public getPrestation(id: string): Observable<PrestationModel> {
+    return this.prestationCollection.doc<PrestationModel>(id).valueChanges();
+    // return this.http.get(`urlaspi/prestations/${id}`);
   }
 }

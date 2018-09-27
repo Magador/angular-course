@@ -18,6 +18,7 @@ export class AddPrestationComponent implements OnInit {
 
   add(prestation: PrestationModel): void {
     this.prestationService.addPrestation(prestation);
+    // this.prestationService.addPrestation(prestation).subscribe();
     this.router.navigate(['prestation']);
   }
 }
