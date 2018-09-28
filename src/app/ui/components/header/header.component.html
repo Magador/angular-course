@@ -7,9 +7,10 @@
   <div class="title flex-grow-1 text-center">
     <h1>{{ title }}</h1>
   </div>
-  <div>
-    <span>
-      <fa-icon [icon]="faUser"></fa-icon>
-    </span>
+  <button type="button" class="btn btn-light" *ngIf="loginService.user$ | async; let user" (click)="this.logged = !this.logged">
+    <span *ngIf="user === 'login'">Login</span>
+    <span *ngIf="user === 'logout'">Logout {{ loginService.user }}</span>
+  </button>
+  <div class="m-3">
+    <fa-icon [icon]="faUser"> </fa-icon>
   </div>
-</div>

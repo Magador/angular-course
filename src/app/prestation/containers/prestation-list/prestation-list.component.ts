@@ -12,7 +12,7 @@ import { Observable, Subscription } from 'rxjs';
 })
 export class PrestationListComponent implements OnInit {
   // public prestations: PrestationModel[];
-  public prestations: Observable<PrestationModel[]>;
+  public prestations$: Observable<PrestationModel[]>;
   private sub: Subscription;
   public headers: string[];
   public tableButton: TableButton;
@@ -20,7 +20,7 @@ export class PrestationListComponent implements OnInit {
   constructor(private prestationService: PrestationService) {}
 
   ngOnInit(): void {
-    this.prestations = this.prestationService.collection;
+    this.prestations$ = this.prestationService.collection$;
     this.headers = [
       'Type',
       'Client',
@@ -28,7 +28,8 @@ export class PrestationListComponent implements OnInit {
       'ADR excl. tax',
       'Excl. tax total',
       'Incl. tax total',
-      'State'
+      'State',
+      'Delete'
     ];
     this.tableButton = {
       route: 'add',

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 
-import { TableButton } from '../../interfaces/table-button';
+import { PrestationService } from '../../../prestation/services/prestation.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-table',
@@ -11,8 +12,11 @@ import { TableButton } from '../../interfaces/table-button';
 export class TableComponent implements OnInit {
   @Input()
   public headers: string[];
+  public notification$: Subject<any>;
 
-  constructor() {}
+  constructor(private prestationService: PrestationService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.notification$ = this.prestationService.notification$;
+  }
 }

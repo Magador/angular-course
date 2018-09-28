@@ -9,3 +9,4 @@
   </table>
 </div>
 <ng-content select="app-table-button"></ng-content>
+<div class="alert" role="alert" *ngIf="notification$ | async; let notification">{{notification}}</div>
