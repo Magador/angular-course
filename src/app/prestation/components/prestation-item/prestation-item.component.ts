@@ -1,8 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { PrestationModel } from '../../../shared/models/prestation.model';
 import { PrestationState } from '../../../shared/enums/prestation-state.enum';
 import { PrestationService } from '../../services/prestation.service';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: '[app-prestation-item], app-prestation-item',
@@ -17,7 +18,11 @@ export class PrestationItemComponent implements OnInit {
 
   public faTrashAlt = faTrashAlt;
 
-  constructor(private prestationService: PrestationService) {}
+  constructor(
+    private prestationService: PrestationService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {}
 
@@ -33,11 +38,19 @@ export class PrestationItemComponent implements OnInit {
       });
   }
 
-  public onDelete() {
+  public onDelete(e: Event) {
+    e.stopPropagation();
     this.prestationService
       .deletePrestation(this.prestation)
       .then(_ =>
         this.prestationService.notification$.next('Prestation deleted !')
       );
+  }
+
+  @HostListener('click', ['$event'])
+  public onEdit(e): void {
+    this.router.navigate([this.prestation.id, 'edit'], {
+      relativeTo: this.route
+    });
   }
 }

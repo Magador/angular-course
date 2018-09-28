@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PrestationState } from '../../../shared/enums/prestation-state.enum';
 import { PrestationModel } from '../../../shared/models/prestation.model';
@@ -11,7 +11,9 @@ import { PrestationModel } from '../../../shared/models/prestation.model';
 export class PrestationFormReactiveComponent implements OnInit {
   public states = Object.values(PrestationState);
   public form: FormGroup;
-  public prestation: PrestationModel;
+
+  @Input()
+  public prestation = new PrestationModel();
 
   @Output()
   public submit = new EventEmitter<PrestationModel>();
@@ -19,7 +21,6 @@ export class PrestationFormReactiveComponent implements OnInit {
   constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
-    this.prestation = new PrestationModel();
     this.form = this.fb.group({
       type: [this.prestation.type, Validators.required],
       client: [

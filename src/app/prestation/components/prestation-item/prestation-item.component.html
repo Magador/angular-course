@@ -5,7 +5,7 @@
 <td>{{prestation | totalPrice | currency:'EUR'}}</td>
 <td>{{prestation | totalPrice:prestation.vatRate | currency:'EUR'}}</td>
 <td [appPrestationState]="prestation.state">
-  <select (change)="onChangeState($event)">
+  <select (change)="onChangeState($event)" (click)="$event.stopPropagation()">
     <option [value]="prestation.state">{{prestation.state}}</option>
     <ng-container *ngFor="let state of prestationStates">
       <option *ngIf="state !== prestation.state" [value]="state">{{state}}</option>
@@ -13,5 +13,5 @@
   </select>
 </td>
 <td>
-  <fa-icon (click)="onDelete()" [icon]="faTrashAlt"></fa-icon>
+  <fa-icon (click)="onDelete($event)" [icon]="faTrashAlt"></fa-icon>
 </td>

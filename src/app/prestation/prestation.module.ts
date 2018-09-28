@@ -9,6 +9,7 @@ import { PrestationFormComponent } from './components/prestation-form/prestation
 import { AddPrestationComponent } from './containers/add-prestation/add-prestation.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PrestationFormReactiveComponent } from './components/prestation-form-reactive/prestation-form-reactive.component';
+import { EditPrestationComponent } from './containers/edit-prestation/edit-prestation.component';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { PrestationFormReactiveComponent } from './components/prestation-form-re
     PrestationItemComponent,
     PrestationFormComponent,
     AddPrestationComponent,
-    PrestationFormReactiveComponent
+    PrestationFormReactiveComponent,
+    EditPrestationComponent
   ]
 })
 export class PrestationModule {}
